@@ -1,0 +1,34 @@
+{
+
+
+	"manifest_version": 2,
+	"name": "Color Blind",
+	"version": "2.244",
+	"description": "Change Website Color As Your Choice.",
+	"icons": {
+		"16": "icons/color_icons.png",
+		"32": "icons/EYE-logo-32.png",
+		"48": "icons/EYE-logo-32.png",
+		"128": "icons/EYE-logo-128.png"
+	},
+	"page_action": {
+		"default_icon": "icons/color_icons.png",
+		"default_title": "Change Colors",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts" : ["background_page.js"],
+		"persistent" : false
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": ["<all_urls>"],
+			"js": ["convert.js"],
+			"all_frames": true
+		}
+	],
+	"minimum_chrome_version": "33.0",
+	"options_page": "options.html",
+	"permissions": ["tabs", "webNavigation", "http://*/*", "https://*/*", "<all_urls>"]
+}
